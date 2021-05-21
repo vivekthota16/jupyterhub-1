@@ -24,7 +24,7 @@
 ARG BASE_IMAGE=ubuntu:focal-20200729
 FROM $BASE_IMAGE AS builder
 
-USER root
+USER 1001
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
@@ -89,8 +89,6 @@ RUN npm install -g configurable-http-proxy@^4.2.0 \
 # install the wheels we built in the first stage
 COPY --from=builder /src/jupyterhub/wheelhouse /tmp/wheelhouse
 RUN python3 -m pip install --no-cache /tmp/wheelhouse/*
-
-USER 1001
 
 RUN mkdir -p /srv/jupyterhub/
 WORKDIR /srv/jupyterhub/
