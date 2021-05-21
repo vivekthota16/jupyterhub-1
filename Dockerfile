@@ -56,7 +56,7 @@ RUN python3 -m pip wheel --wheel-dir wheelhouse dist/*.whl
 
 FROM $BASE_IMAGE
 
-USER root
+USER 1001
 
 ENV DEBIAN_FRONTEND=noninteractive
 
