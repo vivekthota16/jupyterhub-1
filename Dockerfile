@@ -90,6 +90,8 @@ RUN npm install -g configurable-http-proxy@^4.2.0 \
 COPY --from=builder /src/jupyterhub/wheelhouse /tmp/wheelhouse
 RUN python3 -m pip install --no-cache /tmp/wheelhouse/*
 
+USER 1001
+
 RUN mkdir -p /srv/jupyterhub/
 WORKDIR /srv/jupyterhub/
 
